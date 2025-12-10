@@ -1,23 +1,20 @@
-class Stack:
+class Stack():
     def __init__(self):
-        # スタックのデータを保持するリスト
         self._items = []
 
     def is_empty(self):
-        """スタックが空かどうかを返す"""
         return len(self._items) == 0
-
+    
     def push(self, item):
-        """データをスタックのトップに追加する"""
-        # ヒント: リストの末尾に追加するメソッドを使う
         self._items.append(item)
 
     def pop(self):
-        """スタックのトップからデータを取り出し、削除する"""
         if self.is_empty():
-            return None # 空の場合は None を返す
-        # ヒント: リストの末尾の要素を取り出すメソッドを使う
+            return None
+        
         return self._items.pop()
+    
+
     
 
 class Queue:
