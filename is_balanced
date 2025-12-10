@@ -1,0 +1,26 @@
+def is_balanced(s):
+    stack = []
+    
+    # 括弧の対応関係を分かりやすくするための辞書
+    mapping = {")": "(", "}": "{", "]": "["} 
+    
+    for char in s:
+        # 1. 開き括弧の場合
+        if char in "([{":
+            stack.append(char)
+        
+        # 2. 閉じ括弧の場合
+        elif char in ")]}":
+            
+            # 2-a. スタックが空かチェック
+            if not stack:
+                return False
+
+            # 2-b. 対応チェック
+            top_element = stack.pop()
+            # mapping[char] は現在の閉じ括弧に対応する「期待される開き括弧」
+            if mapping[char] != top_element:
+                return False
+                
+    # 3. 最終チェック: 全ての文字を走査した後、スタックが空であれば True
+    return not stack
