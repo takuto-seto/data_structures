@@ -1,3 +1,4 @@
+from collections import deque
 class Stack():
     def __init__(self):
         self._items = []
@@ -14,29 +15,63 @@ class Stack():
         
         return self._items.pop()
     
+    def peek(self):
+        if self.is_empty():
+            return None
+        
+        return self._items[-1]
+    
+    
+    
 
     
 
-class Queue:
+# class Queue():
+#     def __init__(self):
+#         self._items = []
+
+#     def is_empty(self):
+#         return len(self._items) == 0
+    
+#     def enqueue(self, item):
+#         self._items.append(item)
+
+#     def dequeue(self):
+#         if self.is_empty():
+#             return None
+        
+#         return self._items.pop(0)
+    
+#     def peek(self):
+#         if self.is_empty():
+#             return None
+        
+#         return self._items[-1]
+    
+
+class EfficientQueue():
     def __init__(self):
-        # キューのデータを保持するリスト
-        self._items = []
+        self._items = deque()
 
     def is_empty(self):
-        """キューが空かどうかを返す"""
         return len(self._items) == 0
-
+    
     def enqueue(self, item):
-        """データをキューの末尾に追加する"""
-        # ヒント: リストの末尾に追加するメソッドを使う
         self._items.append(item)
 
     def dequeue(self):
-        """キューの先頭からデータを取り出し、削除する"""
         if self.is_empty():
             return None
-        # ヒント: リストの先頭 (インデックス 0) の要素を取り出す方法を使う
-        return self._items.pop(0) # ※ pop(0) は O(N) ですが、今回は構造理解のため許容します
+        
+        return self._items.popleft()
+    
+    def peek(self):
+        if self.is_empty():
+            return None
+        
+        return self._items[0]   
+
+
     
 
 if __name__ == '__main__':
